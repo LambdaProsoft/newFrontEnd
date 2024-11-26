@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/transfer.css">
+</head>
+<body>
+    <main class="transfer-container" style="height: 100vh;">
+
+        <header class="sidebar" id="sidebar">
+        </header>
+
+        <section class="dashboard-content">
+            <div class="transfer-box">
+                <form action="" id="transferForm">
+                    <div class="step" id="step1">
+                        <label for="alias">Alias o CBU</label>
+                        <input type="text" id="alias" placeholder="Alias o CBU">
+                        <button type="button" onclick="step1()">Siguiente</button>
+                    </div>
+                
+                    <div class="step" id="step2" style="display: none;">
+                        <label for="monto">Monto</label>
+                        <input type="number" id="monto" placeholder="$ ------">
+                        <button type="button" onclick="step2()">Siguiente</button>
+                    </div>
+                
+                    <!-- Paso 3: Seleccionar Tipo y Descripción -->
+                    <div class="step" id="step3" style="display: none;">
+                        <label for="description">Descripción</label>
+                        <input type="text" id="description" placeholder="Descripción">
+                        <label for="types">Tipos</label>
+                        <select id="types">        
+                        </select>
+                        <button type="button" onclick="step3()">Finalizar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <section id="customAlert" class="alert-overlay"></section>
+
+    <script type="module" src="assets/js/views/transfer.js"></script>
+</body>
+</html>

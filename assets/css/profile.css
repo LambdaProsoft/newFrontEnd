@@ -1,0 +1,27 @@
+.section2 a:hover{
+    background-color: #00cfff;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+#emailInput, #phoneInput{
+    background-color: rgb(91, 68, 141);
+    color: #f2f2f2;
+    border: none;
+    font-size: 18px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.confirm-btn, .cancel-btn{
+    width: 250px;
+    margin: 10px;
+}
+
+.btn-change{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

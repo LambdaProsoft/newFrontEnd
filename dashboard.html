@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - UnajPay</title>
+    <link rel="stylesheet" href="assets/css/transfer.css">
+</head>
+<body>
+    <main class="transfer-container" style="height: 100vh;">
+        <header id="sidebar" class="sidebar" >
+        </header>
+            
+        <section class="dashboard-content">
+            <h2 id="wellcome" class="wellcome">¡Hola XXXXXXX!</h2>
+            <div class="menu-wallet">
+                <div class="balance-info">
+                    <p>Mi dinero</p>
+                    <h3 id="money">$------</h3>
+                </div>
+                <img src="./assets/img/villetera.svg" alt="">
+            </div>
+            <a id="transferButtom" class="menu-transfer" type="submit" href="./transfer.html">
+                <img src="./assets/img/arrows.svg">
+                <p>Transferir</p>
+            </a>
+
+            <ul class="transferences-list" id="lastActivity-table">  
+                <li>
+                   <h2>Última actividad</h2>       
+                </li>      
+                <li class="view-all">
+                    <a href="./activity.html">Ver toda la actividad</a>
+                </li>  
+            </ul>
+        </section>
+    </main>
+    <script type="module" src="assets/js/views/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+body{
+    height: 100%;
+}
+
+.main-menu-container {
+    background-color: rgb(42, 20, 88); /* Violeta oscuro */
+    color: #FF6F00; /* Naranja para el texto y números */
+    padding: 40px;
+    border-radius: 8px;
+    margin-left: 20px;
+    min-height: 600px;
+}
+
+/* Estilos para los contenedores internos */
+.main-menu-container > * {
+    border: 2px solid #00cfff;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+
+#wellcome {
+    font-size: 45px;
+    border: none;
+}
+
+.amount{
+    margin-top: 20px;
+    max-width: 80%;
+    min-width: 500px;
+    max-height: 175px;
+    padding: 10px 30px;
+}
+
+.amount span{
+    font-size: 25px;
+}
+
+.amount div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.amount p{
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.amount img{
+    width: 85px;
+    height: 85px;
+}
+
+/* Estilo del botón de transferencia */
+.transfer {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(42, 20, 88);
+    justify-content: start;
+    gap: 10px;
+    cursor: pointer;
+    width: 175px;
+    height: 50px;
+}
+
+.transfer img{
+    width: 45px;
+    height: 30px;
+}
+.transfer p{
+    font-size: large;
+    text-align: auto;
+}
+
+.transfer:hover{
+    background-color: #00cfff;
+}
+
+/* Tabla de actividad */
+.contenedor-tabla{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    max-width: 80%;
+    min-width: 500px;
+}
+
+.table-custom {
+    background-color: rgb(42, 20, 88); 
+    overflow: hidden; 
+    border-radius: 10px; 
+}
+
+#lastActivity-table {
+    width: 100%;
+    color: #FF6F00; 
+    border: 2px solid #00cfff; 
+    border-radius: 10px; 
+    max-width: 100%;
+    min-width: 500px;
+    border-collapse: collapse; 
+    overflow: hidden; 
+}
+
+#lastActivity-table td, #lastActivity-table th {
+    border: none; 
+    padding: 10px;
+}
+
+
+#lastActivity-table th {
+    text-align: left;
+    padding: 10px;
+    border: none; 
+}
+
+/* Estilo para las filas de la tabla */
+#lastActivity-table td {
+    padding: 10px;
+    border-top: 2px solid #00cfff; 
+    border-left: none; 
+    border-right: none; 
+}
+
+#lastActivity-table tr:hover {
+    background-color: #00cfff;
+    cursor: pointer;
+}

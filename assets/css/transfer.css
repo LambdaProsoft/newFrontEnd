@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap'); /* Peso "Black" */
+
+:root {
+    --pink: #F26671;    
+    --purple: #5C148C;  
+    --light-purple: #BF6CD9;     
+    --blue: #1B1140; 
+    --light-blue: #04BFBF; 
+    --white: #ffffff; 
+}
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(to bottom, var(--light-purple), var(--blue));
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+    height: 100%;
+    background-size: cover;
+    padding: 40px 20px;
+    margin: 0;
+}
+body::-webkit-scrollbar {
+    width: 8px;
+    background: linear-gradient(to bottom, var(--light-purple), var(--blue));
+}
+body::-webkit-scrollbar-thumb {
+    border-radius: 20px; 
+}
+body::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+
+/*Dashboard*/
+.wellcome{
+    margin-top: 0.5rem;
+}
+.menu-wallet{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--light-blue);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.menu-wallet p,.menu-wallet h3{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.menu-wallet p{
+    font-size: 25px;
+}
+.menu-wallet h3{
+    font-size: 55px;
+}
+.menu-wallet img{
+    width: 100px;
+    filter: invert(80%) sepia(95%) saturate(220%) hue-rotate(310deg) brightness(85%) contrast(150%);
+}
+.menu-transfer {
+    text-decoration: none;
+    color: var(--pink);
+    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--light-blue);
+    width: 15%;
+    height: 10%;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Suaviza los cambios */
+}
+.menu-transfer:hover {
+    background-color: var(--light-blue);
+}
+.menu-transfer img {
+    width: 30px;
+    height: 25px;
+    filter: invert(60%) sepia(95%) saturate(350%) hue-rotate(310deg) brightness(85%) contrast(150%);
+}
+
+/*Sidebar*/
+.logo-title {
+    font-size: 50px;
+    font-weight: bold;
+    margin: 0;
+    color: var(--pink);
+    text-align: center;
+}
+.logo-title span {
+    color: var(--light-blue);
+}
+.sidebar {
+    background-color: var(--blue);
+    max-width: 200px;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+.sidebar-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.sidebar-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.items,.items-exit{
+    display: flex;
+    align-items: center;
+}
+.items img,.items-exit img{
+    width: 30px;
+    filter: invert(80%) sepia(95%) saturate(177%) hue-rotate(310deg) brightness(85%) contrast(150%);
+}
+.items-exit {
+    margin-top: auto;
+}
+.items:hover,.items-exit:hover{
+    background-color: var(--light-blue);
+    border-radius: 10px;
+}
+.menu-item {
+    color: var(--pink);
+    text-decoration: none;
+    font-size: 20px;
+    padding-bottom: 10px;
+    padding-top: 15px;
+}
+
+
+/*Tarjeta principal*/
+.dashboard-content {
+    background-color: var(--blue);
+    flex-grow: 1;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    overflow: auto;   
+}
+.dashboard-content::-webkit-scrollbar {
+    width: 8px;
+}
+.dashboard-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2); 
+    border-radius: 20px; 
+}
+.dashboard-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+.dashboard-content h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.transfer-container {
+    color: var(--pink);
+    display: flex;
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+}
+.transfer-box {
+    padding: 40px;
+    border-radius: 20px;
+    width: 500px;
+    color: var(--pink);
+    border: 1px solid var(--light-blue);
+}
+.transfer-box form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 10px;
+    color: var(--pink);
+}
+.transfer-box form input, .transfer-box form select {
+    padding: 20px;
+    width: 90%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    color: var(--light-purple);
+}
+
+.transferences-list{
+    padding-inline-start: 0px;
+    overflow-y:auto;   
+}
+/*Actividad*/
+.transferences-list li{
+    list-style: none;
+    border-style:solid;
+    border-width: 0.5px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    border-color: var(--light-blue);
+    color: var(--pink);
+    font-size: 18px;
+}
+.transferences-list :first-child{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+.transferences-list :last-child{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.activity-content{
+    display: flex;
+    font-weight: bold;
+    font-size: 20px;
+    justify-content:space-between;
+    align-items: center;
+}
+.activity-img-detail, .transferDetail-img{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.activity-date, .activity-alias{
+    font-weight: normal;
+    font-size: 16px;
+}
+.transferDetail-img{
+    margin-top: 1rem; 
+    margin-bottom: 1rem;
+}
+.transferDetail-title{
+    padding-left: 1rem;
+    text-align: center;
+    font-size: 40px;
+    margin: 0;
+}
+.transferDetail-amount{
+    font-weight: bolder;
+    font-size: 30px;
+}
+.activity-detail-alias{
+    padding-left: 1rem;
+}
+.activity-amount-date{
+    text-align: end;
+}
+.activity-img-detail img, .transferDetail-img img{
+    width: 60px;
+    filter: invert(80%) sepia(95%) saturate(350%) hue-rotate(310deg) brightness(85%) contrast(150%);
+}
+.view-all{   
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative; /* Asegura compatibilidad con hijos */
+}
+.view-all a{
+    padding: 1rem;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: var(--light-blue);
+    transition: color 0.3s ease;
+}
+.view-all:hover {   
+    background-color: var(--light-blue);
+}
+.view-all a:hover{
+    color: var(--pink);
+}
+.paginator {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+}
+.paginator button {
+    width: auto;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+/*Datos usuario*/
+.user-data{
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+}
+.user-update-icon{
+    height: 50px;
+    width: 50px;
+    filter: invert(55%) sepia(95%) saturate(390%) hue-rotate(310deg) brightness(85%) contrast(150%);
+
+}
+
+/*Alerta*/
+.alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    display: none;
+}
+.alert-box {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+    z-index: 1001;
+    animation: fadeIn 0.3s ease-in-out;
+    visibility: visible;
+}
+.alert-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+.alert-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 10px;
+}
+.alert-message {
+    font-size: 16px;
+    color: black;
+    margin-bottom: 20px;
+}
+.alert-button {
+    background-color: var(--white);
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.alert-button:hover {
+    background-color: #f1f1f1;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
+/*Botones*/
+button {
+    background-color: var(--light-purple);
+    border: none;
+    padding: 15px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    margin-top: 10px;
+}
+button:hover {
+    background-color: var(--purple);
+}
