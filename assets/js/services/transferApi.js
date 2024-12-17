@@ -1,7 +1,9 @@
+import { UrlTransfer } from "../constants.js";
+
 const getTransferByAccountId = async (accountId,paginationParamas) => {
     try {
         let result = [];
-            let response = await fetch(`https://localhost:7045/api/Transfer/${accountId}/Accounts?${paginationParamas}`, {
+            let response = await fetch(`${UrlTransfer}Transfer/${accountId}/Accounts?${paginationParamas}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type' : 'application/json'

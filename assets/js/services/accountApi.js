@@ -1,7 +1,9 @@
+import { UrlAccount } from "../constants.js";
+
 const getAccountByUserId = async (userId) => {
     try {
         let result = [];
-        let response = await fetch(`https://localhost:7214/api/Account/User/${userId}`, {
+        let response = await fetch(`${UrlAccount}Account/User/${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type' : 'application/json'
@@ -17,6 +19,7 @@ const getAccountByUserId = async (userId) => {
         console.error("Hubo un problema al obtener la cuenta:", error);
     }
 }
+
 const getAccountById = async (accountId) => {
 
     try {

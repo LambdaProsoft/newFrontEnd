@@ -344,8 +344,9 @@ ul#password-checklist li.valid {
 }
 
 .account-type-button {
-    background-color: var(--purple);
-    color: var(--pink);
+    background-color: var(--light-purple); 
+    color: var(--blue); 
+    font-weight: 600;
     font-size: 15px;
     border-radius: 10px;
     padding: 15px 20px;
@@ -367,61 +368,71 @@ ul#password-checklist li.valid {
 }
 
 .form-group label {
-    color: var(--pink); /* Color rosado */
-    font-weight: bold; /* Negrita */
-    margin-bottom: 5px; /* Espaciado entre label y campo */
-    display: block; /* Label en bloque */
+    color: var(--pink);
+    font-weight: bold; 
+    margin-bottom: 5px; 
+    display: block; 
 }
 
 .form-group {
     width: 140%;
     margin-left: -20%; 
     margin-right: -20%; 
-    margin-bottom: 15px; /* Espaciado entre los grupos */
+    margin-bottom: 15px; 
 }
 
 .form-group input {
     width: 100%;
-    padding: 10px; /* Espaciado interno */
-    border: 1px solid var(--light-blue); /* Borde ligero */
-    border-radius: 5px; /* Esquinas redondeadas */
-    font-size: 1rem; /* Tamaño de texto estándar */
-    margin-top: 5px; /* Separación entre label y campo */
+    padding: 10px; 
+    border: 1px solid var(--light-blue); 
+    border-radius: 5px; 
+    font-size: 1rem;
+    margin-top: 5px; 
 }
 
 #login-btn,  #verify-btn, #volver-btn{
     width: 140%;
     margin-left: -20%; 
     margin-right: -20%; 
-    padding: 10px; /* Espaciado interno */
-    background-color: var(--purple); /* Color base */
-    color: var(--pink); /* Color del texto */
-    border: none; /* Sin bordes */
-    border-radius: 5px; /* Esquinas redondeadas */
-    cursor: pointer; /* Cursor de mano */
-    font-weight: bold; /* Negrita */
-    font-size: 1rem; /* Tamaño estándar */
-    text-align: center; /* Centrado */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Efecto suave */
-    margin-top: 10px; /* Separación superior */
+    padding: 10px; 
+    background-color: var(--purple); 
+    color: var(--pink); 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 1rem; 
+    text-align: center; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    margin-top: 10px; 
+}
+
+#verify-btn{
+    margin-top: 20px;
+    margin-bottom: 15px;
 }
 
 #login-btn:hover {
-    background-color: var(--light-purple); /* Color al pasar el mouse */
-    color: var(--blue); /* Texto oscuro al pasar el mouse */
+    background-color: var(--light-purple); 
+    color: var(--blue); 
 }
 
 #verify-btn:hover {
-    background-color: var(--light-purple); /* Color al pasar el mouse */
-    color: var(--blue); /* Texto más oscuro al hover */
+    background-color: var(--light-purple); 
+    color: var(--blue); 
+}
+
+#volver-btn:hover {
+    background-color: var(--light-purple); 
+    color: var(--blue); 
 }
 
 .login-title {
-    text-align: center; /* Centrar el texto */
-    margin-bottom: 20px; /* Espaciado inferior */
-    color: var(--pink); /* Color específico */
-    font-weight: bold; /* Negrita */
-    font-size: 1.5em; /* Tamaño del texto */
+    text-align: center; 
+    margin-bottom: 20px; 
+    color: var(--pink); 
+    font-weight: bold; 
+    font-size: 1.5em; 
 }
 
 .conte-container {

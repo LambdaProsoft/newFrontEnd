@@ -1,10 +1,57 @@
 import alertMessage from "../components/alertMessage.js";
+import { UrlUser } from "../constants.js";
+
+const logIn = async (requestData) => {
+    try {
+        let response = await fetch(`${UrlUser}User/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json'
+            },
+            body: JSON.stringify(requestData)
+        });
+    return response;
+    } catch (error) {
+        console.error("Error en el login:", error);
+        throw error;
+    }
+}
+
+export const verifyCode = async (email, verificationCode) => {
+    try {
+        const response = await fetch(`${UrlUser}User/verify-code`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, verificationCode }),
+        });
+        return response;
+    } catch (error) {
+        console.error('Error en la verificación del código:', error);
+        throw error; 
+    }
+};
+
+const createUser = async (request) => {
+    try {
+        let response = await fetch(`${UrlUser}User/create`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(request)
+        });
+        return response;
+    } catch (error) {
+        console.error("Hubo un problema al crear el usuario:", error);
+    }
+}
 
 const getUserById = async (userId) => {
-
     try {
         let result = [];
-        let response = await fetch(`https://localhost:7160/api/User/${userId}`, {
+        let response = await fetch(`${UrlUser}User/${userId}`, {
             method: 'GET',
             headers: {
                 'Content-Type' : 'application/json'
@@ -60,11 +107,9 @@ const updateUser = async (userId, userDataUpdate) => {
         if (response.ok) {
             result = await response.json();
             console.log("Usuario actualizado.");
-            alert("Usuario actualizado con exito.");
-            
+            alert("Usuario actualizado con éxito.");
         } else {
-            console.error("Hubo un problema al actualizar los datos del usuario:", error);
-            throw new Error("No se pudo actualizar los datos.");
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
         }
         
         return result;
@@ -108,6 +153,9 @@ const changePassword = async (userDataUpdate) => {
 }
 
 const UserApi = {
+    Login : logIn,
+    VerifyCode: verifyCode,
+    CreateUser: createUser,
     GetUserById : getUserById,
     RefreshToken : refreshToken,
     UpdateUser : updateUser,

@@ -4,95 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil de Usuario - UnajPay</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="stylesheet" href="assets/css/transfer.css">
 
 </head>
-<body class="main" style="height: 100%;">
-        <!--Barra de navegacion-->
-        <nav id="navbar-side" class="nav-bar-lateral container">
-            <div class="title">
-                <h1 class="logo-title">Unaj<span>Pay</span></h1>
-            </div>
-            <div class="items">
-                <img class="icono" src="./assets/images/home2.png">
-                <a id="start" href="./main-menu.html" class="menu-item">| Inicio</a>
-            </div>
-            <div class="items"> 
-                <img class="icono" src="./assets/images/account2.png"> 
-                <a id="account" href="./account.html" class="menu-item">| Cuenta</a>
-            </div>
-            <div class="items">
-                <img class="icono" src="./assets/images/user2.png">
-                <a id="userProfile" href="./UserProfile.html" class="menu-item">| Mi usuario</a>
-            </div>
-            <div class="items exit">
-                <img class="icono" src="./assets/images/exit2.png">
-                <a id="logout" href="./login.html" class="menu-item">| Cerrar sesión</a>
-            </div>
-        </nav>
-
-        <!-- Contenido de perfil de usuario -->
-        <div class="user-profile-content">
-            <div class="user-container">
-                <div class="user-info-container">
-                    <h2 class="user-profile-title">Mi usuario</h2>
-                    <div class="user-info">
-                        <div class="section1">
-                            <p><strong>Nombre y Apellido</strong></p>
-                            <p id="nameUser">Máximo Cozzetti</p>
-                        </div>
-                    </div>
-                    <div class="user-info">
-                        <div class="section1">
-                            <p><strong>Correo</strong></p>
-                            <p id="emailUser">maximo.cozzetti@mail.com</p>
-                        </div>
-                        <div class="section2">
-                            <a id="changeEmailBtn" href="#" class="edit-icon">&#9998;</a>
-                        </div>
-                    </div>
-                    <div class="user-info">
-                        <div class="section1">
-                            <p><strong>Teléfono</strong></p>
-                            <p id="telUser">113456789</p>
-                        </div>
-                        <div class="section2">
-                            <a id="changeTelBtn" href="#" class="edit-icon">&#9998;</a>
-                        </div>
-                    </div>
-                    <div class="user-info">
-                        <div class="section1">
-                            <p><strong>Fecha de nacimiento</strong></p>
-                            <p id="dateUser">31-02-1990</p>
-                        </div>
-                    </div>
-                    <div class="user-info">
-                        <div class="section1">
-                            <p><strong>DNI</strong></p>
-                            <p id="dniUser">38.123.321</p>
-                        </div>
-                    </div>
-                    <div class="user-info">
-                        <div class="section1">
-                            <p><strong>Dirección</strong></p>
-                            <p id="dirUser">Ravenna 312, Florencio Varela, Buenos Aires, 1888</p>
-                        </div>
-                    </div>
-                    <div class="user-info">
-                        <div class="section1">
-                            <p><strong>Contraseña</strong></p>
-                            <p id="passUser">********</p>
-                        </div>
-                        <div class="section2">
-                            <button class="change-password-btn">¿Cambiar contraseña?</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script src="./assets/js/userProfile.js" type="module"></script>
+<body class="main">
+    <main class="transfer-container">
+        <header class="sidebar" id="sidebar">
+        </header>  
+        <section class="dashboard-content" id="user-container">
+            <ul id="detail" class="transferences-list" style="font-size: 20px;">
+            </ul>
+        </section>   
+    </main>
+    <script type="module" src="./assets/js/views/userProfile.js"></script>
 </body>
 </html>

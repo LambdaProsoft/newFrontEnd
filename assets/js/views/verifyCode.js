@@ -1,5 +1,6 @@
-import Loader from "./Loader.js";
-import alertMessage from "./alertMessage.js";
+import Loader from "../components/Loader.js";
+import alertMessage from "../components/alertMessage.js";
+import UserApi from "../services/userApi.js";
 
 document.getElementById('verify-btn').addEventListener('click', async (event) =>{
     event.preventDefault();
@@ -10,13 +11,7 @@ document.getElementById('verify-btn').addEventListener('click', async (event) =>
 
     try {
         // Petición al endpoint de verificación de código
-        const response = await fetch('https://localhost:7160/api/User/verify-code', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ email, verificationCode })
-        });
+        const response = await UserApi.VerifyCode(email, verificationCode);
 
         if (response.ok) {
             Loader.Hidden();
@@ -61,6 +56,3 @@ function decode(token){
     const payload = token.split('.')[1];
     return JSON.parse(atob(payload)); //Decodifica
 }
-
-
-

@@ -14,7 +14,7 @@ export default async function userDetail(userData) {
                         <h3>Correo</h3>
                         <p id="userEmail">${userData.email}</p>
                     </div>
-                    <a id="changeEmailBtn" href="#" class="edit-icon" onclick="enableEdit()">
+                    <a id="changeEmailBtn" href="#" class="edit-icon" onclick="enableEdit('email')">
                         <img class="user-update-icon" src="./assets/img/pencil.svg">
                     </a>
                 </div>
@@ -25,7 +25,7 @@ export default async function userDetail(userData) {
                         <h3>Teléfono</h3>
                         <p id="userPhone">${userData.phone}</p>
                     </div>
-                    <a id="changePhoneBtn" href="#" class="edit-icon" onclick="enableEdit()">
+                    <a id="changePhoneBtn" href="#" class="edit-icon" onclick="enableEdit('phone')">
                         <img class="user-update-icon" src="./assets/img/pencil.svg">
                     </a>
                 </div>

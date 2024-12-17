@@ -12,7 +12,7 @@ export default function sidebar(){
                     </div>
                     <div class="items">
                         <img class="icono" src="./assets/img/usuario.svg">
-                        <a id="userProfile" href="./UserProfile copy.html" class="menu-item">| Mi usuario</a>
+                        <a id="userProfile" href="./UserProfile.html" class="menu-item">| Mi usuario</a>
                     </div>
                     <div class="items-exit" style="">
                         <img class="icono" src="./assets/img/cerrarSesion.svg">
@@ -23,14 +23,3 @@ export default function sidebar(){
     `;
 }
 
-/*ORIGINAL
-<div class="sidebar-content">
-    <h1 class="logo-title">Unaj<span>Pay</span></h1>
-    <nav class="sidebar-menu">
-        <a href="#" class="menu-item">Inicio</a>
-        <a href="#" class="menu-item">Cuenta</a>
-        <a href="#" class="menu-item">Mi usuario</a>
-        <a href="#" class="menu-item cerrar-sesion">Cerrar sesión</a>
-    </nav> 
-</div>  
-*/

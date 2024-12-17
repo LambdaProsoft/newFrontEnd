@@ -1,5 +1,6 @@
-import alertMessage from "./components/alertMessage.js";
-import Loader from "./components/Loader.js";
+import alertMessage from "../components/alertMessage.js";
+import Loader from "../components/Loader.js";
+import UserApi from "../services/userApi.js"
 
 Loader.Hidden();
 
@@ -18,17 +19,11 @@ document.getElementById('login-btn').addEventListener('click', async (event) =>{
     };
 
     try {
-        // Petición al endpoint de login
-        const response = await fetch('https://localhost:7160/api/User/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(requestData)
-        });
+        const response = await UserApi.Login(requestData);
 
-        if (response.ok) {
-            //alert('Inicio de sesión exitoso. Por favor, ingrese el código de verificación.');
+        if (response.ok) {;
+            await response.json();
+
             alertMessage(true, "Inicio de sesión exitoso. Por favor, ingrese el código de verificación.");
             document.getElementById('codigo-verificacion-container').style.display = 'block';
             document.getElementById('codigo-verificacion').style.display = 'block';
@@ -53,7 +48,6 @@ document.getElementById('login-btn').addEventListener('click', async (event) =>{
         alert('Hubo un problema con la solicitud. Por favor, inténtelo de nuevo.');
         Loader.Hidden();
     }
-
 });
 
 
@@ -69,4 +63,3 @@ document.getElementById('volver-btn').addEventListener('click', () =>{
 
     Loader.Hidden();
 });
-

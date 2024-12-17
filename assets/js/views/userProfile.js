@@ -5,23 +5,34 @@ import logout from "../components/logout.js";
 import UserApi from "../services/userApi.js";
 import formatDate from "../components/formateDate.js";
 
-// Función para habilitar la edición de email y teléfono
-async function enableEdit() {
-    // Ocultar el botón de editar
-    document.getElementById('changeEmailBtn').style.display = 'none';
-    document.getElementById('changePhoneBtn').style.display = 'none';
+// Función para habilitar la edición de email o teléfono
+function enableEdit(type) {
+    // Ocultar el botón correspondiente y convertir el texto a input
+    if (type === 'email') {
+        document.getElementById('changeEmailBtn').style.display = 'none';
+        
+        const emailElement = document.getElementById('userEmail');
+        const emailValue = emailElement.innerText;
 
-    // Convertir <p> de email a <input>
-    const emailElement = document.getElementById('userEmail');
-    const emailValue = emailElement.innerText;
-    emailElement.innerHTML = `<input type="email" id="emailInput" value="${emailValue}">`;
+        // Guardar el valor original
+        emailElement.setAttribute('data-original', emailValue);
 
-    // Convertir <p> de teléfono a <input>
-    const phoneElement = document.getElementById('userPhone');
-    const phoneValue = phoneElement.innerText;
-    phoneElement.innerHTML = `<input type="tel" id="phoneInput" value="${phoneValue}">`;
+        emailElement.innerHTML = `<input type="email" id="emailInput" value="${emailValue}">`;
+    }
 
-    // Añadir botones de confirmar y cancelar
+    if (type === 'phone') {
+        document.getElementById('changePhoneBtn').style.display = 'none';
+        
+        const phoneElement = document.getElementById('userPhone');
+        const phoneValue = phoneElement.innerText;
+
+        // Guardar el valor original
+        phoneElement.setAttribute('data-original', phoneValue);
+
+        phoneElement.innerHTML = `<input type="tel" id="phoneInput" value="${phoneValue}">`;
+    }
+
+    // Agregar botones de confirmar y cancelar
     const buttonsContainer = document.createElement('div');
     buttonsContainer.classList = 'btn-change';
     buttonsContainer.innerHTML = `
@@ -31,68 +42,83 @@ async function enableEdit() {
 
     document.getElementById('user-container').append(buttonsContainer);
 
-    // Agregar eventos a los botones
-    document.getElementById('confirmBtn').addEventListener('click', updateUserInfo);
+    // Eventos de los botones
+    document.getElementById('confirmBtn').addEventListener('click', () => updateUserInfo(type));
     document.getElementById('cancelBtn').addEventListener('click', cancelEdit);
 }
-window.enableEdit=enableEdit;
 
-// Función para confirmar los cambios y actualizar la información en la API
-async function updateUserInfo() {
+window.enableEdit = enableEdit;
+
+// Función para confirmar los cambios
+async function updateUserInfo(field) {
     const userId = localStorage.getItem('userId');
-    const updatedEmail = document.getElementById('emailInput').value;
-    const updatedPhone = document.getElementById('phoneInput').value;
+    let updatedData = {};
 
-    //try {
-        // Llamada a la API para actualizar el usuario
-        const result = await UserApi.UpdateUser(userId, {
-            email: updatedEmail,
-            phone: updatedPhone
-        });
+    if (field === 'email') {
+        updatedData.email = document.getElementById('emailInput').value;
+    } else if (field === 'phone') {
+        updatedData.phone = Number(document.getElementById('phoneInput').value); // Conversión a número
+    }
 
-        // Actualizar los elementos en la página
-        document.getElementById('userEmail').innerHTML = result.email;
-        document.getElementById('userPhone').innerHTML = result.phone;
-        console.log(result);
-        // Restaurar la vista original
-        document.getElementById('changeEmailBtn').style.display = 'block';
-        document.getElementById('changePhoneBtn').style.display = 'block';
-        document.querySelector('.confirm-btn').remove();
-        document.querySelector('.cancel-btn').remove();
+    try {
+        const result = await UserApi.UpdateUser(userId, updatedData);
 
-        //window.location.href="./dashboard.html";
+        // Actualizar vista si el API devuelve la información
+        if (result.email) {
+            document.getElementById('userEmail').innerText = result.email;
+        }
+        if (result.phone !== undefined) {
+            document.getElementById('userPhone').innerText = result.phone;
+        }
 
-    /*} catch (error) {
-        console.error("Error al actualizar la información del usuario:", error);
-        alert("Hubo un problema al actualizar la información.");
-        window.location.href="./UserProfile copy.html";
-    }*/
-}
-
-// Función para cancelar la edición y restaurar la vista original
-async function cancelEdit() {
-    document.getElementById('userEmail').innerHTML = document.getElementById('emailInput').value;
-    document.getElementById('userPhone').innerHTML = document.getElementById('phoneInput').value;
-
-    // Mostrar nuevamente los botones de editar
-    document.getElementById('changeEmailBtn').style.display = 'inline';
-    document.getElementById('changeTelBtn').style.display = 'inline';
-
-    // Eliminar los botones de confirmar y cancelar
-    document.getElementById('confirm-btn').remove();
-    document.getElementById('cancel-btn').remove();
+        resetEditState();
+    } catch (err) {
+        console.error("Error al actualizar la información:", err.message);
+        alert("No se pudo actualizar la información: " + err.message);
+        cancelEdit(); // Restaura la vista en caso de error
+    }
 }
 
 
-// Redirigir a la página de cambio de contraseña
-//document.getElementById('change-password-btn').addEventListener('click', () => {
-//    window.location.href = './change-password.html';
-//});
+// Función para cancelar la edición
+function cancelEdit() {
+    const emailElement = document.getElementById('userEmail');
+    const phoneElement = document.getElementById('userPhone');
+
+    // Restaurar valores originales si existen
+    if (emailElement.getAttribute('data-original')) {
+        emailElement.innerText = emailElement.getAttribute('data-original');
+    }
+
+    if (phoneElement.getAttribute('data-original')) {
+        phoneElement.innerText = phoneElement.getAttribute('data-original');
+    }
+
+    // Restaurar botones
+    resetEditState();
+}
+
+// Función para restaurar los botones y eliminar botones de confirmación
+function resetEditState() {
+    // Mostrar botones de editar
+    const changeEmailBtn = document.getElementById('changeEmailBtn');
+    const changePhoneBtn = document.getElementById('changePhoneBtn');
+
+    if (changeEmailBtn) changeEmailBtn.style.display = 'block';
+    if (changePhoneBtn) changePhoneBtn.style.display = 'block';
+
+    // Eliminar botones de confirmar y cancelar
+    document.querySelector('.confirm-btn')?.remove();
+    document.querySelector('.cancel-btn')?.remove();
+}
+
+
 
 
 const render = async () => {
     const navbar = document.getElementById('sidebar');
     navbar.innerHTML = await sidebar();
+    logout();
 
 
     //Obtener el id desde el localstorage, para asegurarnos de que inicio sesion
@@ -111,4 +137,3 @@ const render = async () => {
 
 }
 window.onload = render;
-logout();

@@ -6,9 +6,31 @@ import UserApi from "../services/userApi.js";
 import logout from "../components/logout.js";
 import validateToken from "../components/validateToken.js";
 
+export function highlightActiveMenu() {
+    const currentPage = window.location.pathname.split("/").pop();
+    const menuItems = document.querySelectorAll('.items');
+
+    menuItems.forEach(item => {
+        const link = item.querySelector('.menu-item');
+        const icon = item.querySelector('.icono'); 
+
+        const linkHref = link.getAttribute('href').split("/").pop();
+
+        if (currentPage === linkHref) {
+            link.classList.add('active'); 
+            icon.classList.add('active-icon'); 
+        } else {
+            link.classList.remove('active');
+            icon.classList.remove('active-icon'); 
+        }
+    });
+}
+
 const render = async () => {
     const navbar = document.getElementById('sidebar');
     navbar.innerHTML = await sidebar();
+    highlightActiveMenu();
+    logout();
 
     const userId = localStorage.getItem('userId');
     if (!userId) {
@@ -70,5 +92,4 @@ document.getElementById('transferButtom').addEventListener('click', ()=> {
     window.location.href = `./transfer.html`;
 });
 
-logout();
 

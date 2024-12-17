@@ -27,6 +27,5 @@ export default function transferAlert(condition, message) {
     document.getElementById('alertBtn').addEventListener('click', () => {
         const alertBox = document.getElementById("customAlert");
         alertBox.style.display = "none";
-        //window.location.href = "main-menu.html";
     })
 }

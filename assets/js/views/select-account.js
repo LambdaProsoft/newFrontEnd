@@ -1,5 +1,9 @@
-import { transferAlert } from "./components/transferAlert.js"
-import Loader from "./components/Loader.js";
+import { transferAlert } from "../components/transferAlert.js"
+import Loader from "../components/Loader.js";
+import UserApi from "../services/userApi.js";
+import alertMessage from "../components/alertMessage.js";
+import accountTypeApi from "../services/accountTypeApi.js";
+import typeCurrencyApi from "../services/typeCurrency.js";
 
 async function closeAlert() {
     const alertBox = document.getElementById("customAlert");
@@ -46,16 +50,12 @@ const alertSection = document.getElementById("customAlert");
         try {
             // Petición al endpoint de registro de usuario
             console.log(userData);
-            const response = await fetch('https://localhost:7160/api/User/create', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userData)
-            });
-            
+            const response = await UserApi.CreateUser(userData);
             if (response.ok) {
-                window.location.href = 'login.html';
+                alertMessage(true, "Bienvenido a UnajPay");
+                document.getElementById('alertBtn').addEventListener('click', () => {
+                    window.location.href = "login.html";
+                });
             } else {
                 const errorData = await response.json();
                 if (errorData.message == "A user with this email already exist") {
@@ -63,14 +63,11 @@ const alertSection = document.getElementById("customAlert");
                 }
                 alertSection.innerHTML = await transferAlert("error",errorData.message);
                 alertSection.style.display = 'flex';
-                //alert(`Error: ${errorData || 'Hubo un problema con el registro'}`);
             }
         } catch (error) {
             console.error('Error al registrar el usuario:', error);
             alert('Hubo un problema con la solicitud. Por favor, inténtelo de nuevo.');
         }
-    
-
 });
 
 
@@ -78,13 +75,7 @@ async function loadAccountType() {
     const accountTypeButtonsContainer = document.getElementById("accountTypeButtons");
     
     try {
-        let result = [];
-        let response = await fetch("https://localhost:7214/api/AccountType");
-        
-        if (response.ok) {
-            result = await response.json();
-        }
-        const accountTypes = result;
+        const accountTypes = await accountTypeApi.GetAccountTypes();
 
         const translations = {
             "Savings bank": "Cuenta de ahorros",
@@ -128,13 +119,7 @@ async function loadCurrencyType() {
     const currencyType = document.getElementById("currency");
     
     try {
-        let result = [];
-        let response = await fetch("https://localhost:7214/api/TypeCurrency");
-        
-        if (response.ok) {
-            result = await response.json();
-        }
-        const currencies = result;
+        const currencies = await typeCurrencyApi.GetTypeCurrency();
 
         currencies.forEach(type => {
             const option = document.createElement("option");
